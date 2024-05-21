@@ -13,6 +13,8 @@ import andy0106.games.towerdefense.tower.TowerManager;
 import andy0106.games.towerdefense.tower.TowerRenderProfile;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.ApplicationListener;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
@@ -40,12 +42,14 @@ public class Main extends Events implements ApplicationListener, Runnable {
 		TowerData tdata = new TowerData("MyTower", 50, 20, 10, 4, 1f, 200, new Vector2(10, 10));
 		TowerRenderProfile trp = new TowerRenderProfile(new Texture("tower.png"), new Vector2(0, 0));
 		Tower my_tower = tower_manager.newTower(tdata, trp);
-		my_tower.setPos(new Vector2(0f, 0f));
+		my_tower.setPos(0f, 0f);
 
 		EnemyData edata = new EnemyData(100, 10, 5, 10, 5, 1f, 0, 10, new Vector2(10, 10));
 		EnemyRenderProfile erp = new EnemyRenderProfile(new Texture("tower.png"), new Vector2(0, 0));
 		Enemy my_enemy = enemy_manager.newEnemy(edata, erp);
-		my_enemy.pos.set(10f, 10f);
+		my_enemy.pos.set(100f, 0f);
+
+		Gdx.input.setInputProcessor(new KeyProcessor(my_enemy));
 	}
 
 	@Override
@@ -95,5 +99,9 @@ public class Main extends Events implements ApplicationListener, Runnable {
 
 	@Override
 	public void onEnemyInAC(Tower tower, Enemy enemy) {
+		if (!enemy.isTargeted()) {
+			tower.shootTarget(enemy);
+			enemy.targeted = true;
+		}
 	}
 }
