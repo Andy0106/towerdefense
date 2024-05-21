@@ -4,7 +4,7 @@ import com.badlogic.gdx.math.Vector2;
 
 public class EnemyData {
     public int max_health;
-    public int health = max_health;
+    public int health;
     public int physical_dp;
     public int magical_dp;
     public int physical_defense;
@@ -16,6 +16,7 @@ public class EnemyData {
 
     public EnemyData(int max_health, int physical_dp, int magical_dp, int physical_defense, int magical_defense, float attack_speed, int enemy_tag, int speed, Vector2 hitbox_size) {
         this.max_health = max_health;
+        this.health = this.max_health;
         this.physical_dp = physical_dp;
         this.magical_dp = magical_dp;
         this.physical_defense = physical_defense;

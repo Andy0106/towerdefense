@@ -26,6 +26,7 @@ public class Bullet {
         if (hitbox.contains(target.getCentral())) {
             this.parent_tower.magazine.remove(this);
             target.targeted = false;
+            target.data.health -= (parent_tower.data.physical_dp - target.data.physical_defense);// + (parent_tower.data.magical_dp - target.data.magical_defense);
         } else {
             float Xdis = target.pos.x - hitbox.x;
             float Ydis = target.pos.y - hitbox.y;

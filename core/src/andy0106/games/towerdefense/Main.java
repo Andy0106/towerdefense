@@ -11,10 +11,8 @@ import andy0106.games.towerdefense.tower.Tower;
 import andy0106.games.towerdefense.tower.TowerData;
 import andy0106.games.towerdefense.tower.TowerManager;
 import andy0106.games.towerdefense.tower.TowerRenderProfile;
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
@@ -39,12 +37,12 @@ public class Main extends Events implements ApplicationListener, Runnable {
 		update_thread.setDaemon(true);
 		update_thread.start();
 
-		TowerData tdata = new TowerData("MyTower", 50, 20, 10, 4, 1f, 200, new Vector2(10, 10));
+		TowerData tdata = new TowerData("MyTower", 10, 5, 9, 4, 1f, 200, new Vector2(0, 0));
 		TowerRenderProfile trp = new TowerRenderProfile(new Texture("tower.png"), new Vector2(0, 0));
 		Tower my_tower = tower_manager.newTower(tdata, trp);
 		my_tower.setPos(0f, 0f);
 
-		EnemyData edata = new EnemyData(100, 10, 5, 10, 5, 1f, 0, 10, new Vector2(10, 10));
+		EnemyData edata = new EnemyData(10, 10, 5, 9, 4, 1f, 0, 10, new Vector2(0, 0));
 		EnemyRenderProfile erp = new EnemyRenderProfile(new Texture("tower.png"), new Vector2(0, 0));
 		Enemy my_enemy = enemy_manager.newEnemy(edata, erp);
 		my_enemy.pos.set(100f, 0f);

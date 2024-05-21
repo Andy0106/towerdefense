@@ -6,9 +6,10 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.utils.Disposable;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class EnemyManager implements Disposable {
-    public ArrayList<Enemy> enemies = new ArrayList<>();
+    public HashSet<Enemy> enemies = new HashSet<>();
     private int global_counter = -1;
     private final EventBus event_bus;
     private final Main main;

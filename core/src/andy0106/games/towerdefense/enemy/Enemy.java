@@ -68,6 +68,9 @@ public class Enemy extends Events implements Disposable, Movable {
     }
 
     public void update(final Main main) {
+        if (data.health <= 0) {
+            main.enemy_manager.enemies.remove(this);
+        }
         if (moving_flags[0]) this.pos.y += data.speed;
         else if (moving_flags[1]) this.pos.y -= data.speed;
         if (moving_flags[2]) this.pos.x -= data.speed;
